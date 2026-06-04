@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristina Podocea | World Climate Relay</title>
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Earthy, joyful color scheme */
+            --bg-linen: #f9f8f3;
+            --text-dark: #1b2a22;
+            --text-light: #ffffff;
+            --earth-green: #2d4c3e;
+            --joy-yellow: #e5ad35;
+            --soft-sage: #8fa47e;   
+            
+            /* Overlays */
+            --overlay-start: rgba(27, 42, 34, 0.45);
+            --overlay-hover: rgba(85, 107, 47, 0.75);
+            
+            --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-linen);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* -------------------------------------------
+           FULL-WIDTH IMMERSIVE HEADER
+        -------------------------------------------- */
+        header {
+            text-align: center;
+            padding: 100px 20px 140px 20px;
+            background: linear-gradient(rgba(45, 76, 62, 0.8), rgba(27, 42, 34, 0.95)), 
+                        url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&q=80&w=2000'); 
+            background-size: cover;
+            background-position: center 30%;
+            color: var(--text-light);
+            width: 100%;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        header p {
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: 1.25rem;
+            opacity: 0.9;
+            letter-spacing: 0.05em;
+            color: var(--soft-sage);
+        }
+
+        /* -------------------------------------------
+           ASYMMETRICAL EDITORIAL GRID 
+        -------------------------------------------- */
+        .grid-container {
+            max-width: 1200px;
+            margin: -80px auto 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Base Card Styling */
+        .card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background-color: #e2dfd5;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        /* Dynamic Grid Sizing */
+        .card.span-6 { grid-column: span 6; min-height: 500px; }
+        .card.span-4 { grid-column: span 4; min-height: 350px; }
+        .card.span-2 { grid-column: span 2; min-height: 350px; }
+
+        /* Card Background Images */
+        .card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition-smooth);
+            z-index: 1;
+        }
+
+        /* Color Overlays over the photos */
+        .card.has-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(27, 42, 34, 0.9) 10%, var(--overlay-start) 100%);
+            z-index: 2;
+            transition: var(--transition-smooth);
+        }
+
+        /* Text Content Layout inside Cards */
+        .card-content {
+            position: relative;
+            z-index: 3;
+            padding: 2.5rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        /* Specific Hero Campaign Adjustments */
+        .card.span-6 .card-content {
+            padding: 4rem;
+        }
+
+        .badge {
+            position: absolute;
+            top: 3rem;
+            left: 4rem;
+            background-color: var(--joy-yellow);
+            color: var(--text-dark);
+            padding: 0.5rem 1.25rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            z-index: 3;
+            box-shadow: 0 4px 15px rgba(229, 173, 53, 0.3);
+        }
+
+        .hero-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            max-width: 600px;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--bg-linen);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            max-width: 500px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* Call to Action Button */
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: var(--joy-yellow);
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* -------------------------------------------
+           THE EXPANDABLE STORY CARD
+        -------------------------------------------- */
+        .card-story {
+            background-color: var(--earth-green);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 3.5rem;
+        }
+
+        .card-story h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--joy-yellow);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .card-story p {
+            color: var(--bg-linen);
+            font-size: 1rem;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Read More / Less Trigger Links */
+        .read-more-btn, .show-less-btn {
+            color: var(--joy-yellow);
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: none;
+            border: none;
+            border-bottom: 1px solid rgba(229, 173, 53, 0.4);
+            padding-bottom: 4px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            margin-top: 0.5rem;
+        }
+
+        .show-less-btn {
+            color: var(--soft-sage);
+            border-bottom-color: rgba(143, 164, 126, 0.4);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .read-more-btn:hover { border-bottom-color: var(--joy-yellow); }
+        .show-less-btn:hover { color: var(--joy-yellow); border-bottom-color: var(--joy-yellow); }
+
+        /* Hidden Full Story Content */
+        .story-full {
+            display: none;
+        }
+
+        /* Active Expanded State Changes */
+        .card-story.is-expanded .story-snippet {
+            display: none;
+        }
+
+        .card-story.is-expanded .story-full {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .card-story.is-expanded .read-more-btn {
+            display: none;
+        }
+
+        .btn-birthday {
+            margin-top: 2rem;
+            width: auto;
+            box-shadow: 0 4px 15px rgba(229, 173, 53, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Secondary Image Cards (Substack) */
+        .card-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+            font-weight: 400;
+        }
+
+        .card-text p {
+            font-size: 0.85rem;
+            color: var(--joy-yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .card-arrow {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: var(--transition-smooth);
+            opacity: 0.7;
+        }
+
+        /* Interactive Hover Animations */
+        a.card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .card.has-image:hover .card-bg {
+            transform: scale(1.04);
+        }
+
+        .card.has-image:hover::after {
+            background: linear-gradient(to top, rgba(27, 42, 34, 0.95) 15%, var(--overlay-hover) 100%);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(229, 173, 53, 0.4);
+            background-color: #f0bc4d;
+        }
+
+        a.card:hover .card-arrow {
+            transform: translateX(5px);
+            color: var(--joy-yellow);
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 5rem 2rem 3rem 2rem;
+            font-size: 0.85rem;
+            color: var(--soft-sage);
+            letter-spacing: 0.05em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            .card.span-6, .card.span-4, .card.span-2 {
+                grid-column: span 1;
+            }
+            .card.span-6 {
+                min-height: 450px;
+            }
+            .card.span-6 .card-content {
+                padding: 2.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-end;
+                gap: 2rem;
+            }
+            .badge {
+                top: 2rem;
+                left: 2.5rem;
+            }
+            header h1 {
+                font-size: 2.5rem;
+            }
+            .hero-text h2 {
+                font-size: 2.5rem;
+            }
+            .card-story {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 80px 20px 100px 20px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+            .grid-container {
+                padding: 0 1rem;
+                margin-top: -50px;
+            }
+            .badge { top: 1.5rem; left: 1.5rem; }
+            .card.span-6 .card-content { padding: 1.5rem; }
+            .hero-text h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- IMMERSIVE PHOTO HEADER -->
+    <header>
+        <h1>Cristina Podocea</h1>
+        <p>International Mountain Leader &nbsp;|&nbsp; Vertical Pursuer &nbsp;|&nbsp; Trail Scribbler</p>
+    </header>
+
+    <!-- OVERLAPPING MAIN GRID -->
+    <main class="grid-container">
+
+        <!-- PRIMARY FOCUS: Fundraising Campaign Hero Card -->
+        <a href="https://www.worldclimaterelay.org/cristina-podocea" target="_blank" class="card has-image span-6">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80');"></div>
+            
+            <div class="badge">Current Project</div>
+            
+            <div class="card-content">
+                <div class="hero-text">
+                    <h2>WORLD CLIMATE RELAY</h2>
+                    <p>Despite being injured, I am moving for the sake of the nature I love so much. If you too care about the climate, let’s move together! Learn more about my Birthday challenge below</p>
+                </div>
+                <div class="btn-cta">
+                    Support the Initiative <span>&rarr;</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- SECONDARY: Expandable Story Card -->
+        <div class="card card-story span-4">
+            <h2>A Birthday Mission</h2>
+            
+            <!-- The Snippet shown initially -->
+            <div class="story-snippet">
+                <p>Around my Birthday I love to do something meaningful, in the form of a mountain project or a fund raising project for a cause I care about. This year is a big one. I round up numbers.</p>
+                <p>I had a big mountain project in mind, something meaningful for me. If you want to give Gods a good laugh, make plans, they say. This has been true a lot in my life and even more so in the past couple of years. However, I have learned to adapt...</p>
+                <button class="read-more-btn">Read Full Story &rarr;</button>
+            </div>
+
+            <!-- The Full Story hidden initially -->
+            <div class="story-full">
+                <p>Around my Birthday I love to do something meaningful, in the form of a mountain project or a fund raising project for a cause I care about. This year is a big one. I round up numbers. I had a big mountain project in mind, something meaningful for me. If you want to give Gods a good laugh, make plans, they say. This has been true a lot in my life and even more so in the past couple of years. However, I have learned to adapt.</p>
+                
+                <p>About 15 years ago I would fill the hallway with bags sorting the trash. There was no organized way to recycle and I was doing my own thing, researching collection points, gathering the trash and walking even 20 minutes with the heavy bags to recycle them. Nobody cared, my boyfriend was laughing at my futile efforts and there was nothing glamorous in doing something for the environment. I cared when very little people cared. I carried those bags every week, without social media and applauses.</p>
+                
+                <p>Times have changed and now climate change is part of our lives. Nobody can deny the impact that years of careless behaviors has on the environment and the climate. As a mountain lover and a guide, I see it every day and it breaks my heart. Now more people care, now sorting your trash is easy and you have it at your doorsteps (and you sometimes still don’t do it!) not organizations work actively to salvage what it can be salvaged.</p>
+                
+                <p>The high impact climate opportunities are funded through the Giving Green Fund – for which we are raising funds this week via the Climate Challenge Relay!</p>
+                
+                <p>The one activity I can do, even injured, is to cycle. Therefore, my little birthday project is to cycle 400km (1% of once around the world) and to raise 1000 EUR. If you care about the climate- take part – donate, get moving, raise funds yourself. If you don’t care, but you want to offer me a smile for my Birthday, or you just like me: just donate. Every Euro counts! And really, 10 Euros is like 2 coffees! Let’s GO!</p>
+                
+                <button class="show-less-btn">Show Less &uarr;</button>
+            </div>
+
+            <!-- PERSISTENT DONATION BUTTON (Always visible at the bottom of the card) -->
+            <a href="https://www.worldclimaterelay.org/cristina-podocea" target="_blank" class="btn-cta btn-birthday">
+                Happy Birthday Donation <span>&rarr;</span>
+            </a>
+        </div>
+
+        <!-- SECONDARY: Substack Link -->
+        <a href="https://crispodocea.substack.com/" target="_blank" class="card has-image span-2">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="card-content">
+                <div class="card-text">
+                    <h2>Trail Scribbler</h2>
+                    <p>Read on Substack</p>
+                </div>
+                <div class="card-arrow">&rarr;</div>
+            </div>
+        </a>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Cristina Podocea. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Expand/Collapse mechanics -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const readMoreBtn = document.querySelector('.read-more-btn');
+            const showLessBtn = document.querySelector('.show-less-btn');
+            const storyCard = document.querySelector('.card-story');
+            
+            if (storyCard) {
+                if (readMoreBtn) {
+                    readMoreBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        storyCard.classList.add('is-expanded');
+                    });
+                }
+                if (showLessBtn) {
+                    showLessBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        storyCard.classList.remove('is-expanded');
+                        storyCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    });
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -205,7 +205,76 @@
             border: none;
             cursor: pointer;
         }
+<!-- PROGRESS TRACKER SECTION -->
+<style>
+  .tracker-container {
+    background: #1b2a22;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 900px;
+  }
+  .tracker-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #e2e8f0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .metric-row {
+    margin-bottom: 1.5rem;
+  }
+  .metric-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #cbd5e1;
+  }
+  .metric-info strong { color: #4ade80; }
+  .bar-bg {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    height: 12px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .bar-fill {
+    background: linear-gradient(90deg, #2d4c3e, #4ade80);
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 0.5s ease;
+  }
+</style>
 
+<div class="tracker-container">
+  <h2 class="tracker-title">Campaign Progress</h2>
+  
+  <!-- Metric 1: Distance -->
+  <div class="metric-row">
+    <div class="metric-info">
+      <span>Distance Cycled</span>
+      <span><strong>0 km</strong> / 400 km</span>
+    </div>
+    <div class="bar-bg">
+      <!-- CHANGE THE WIDTH PERCENTAGE BELOW (e.g., width: 25%) -->
+      <div class="bar-fill" style="width: 0%;"></div>
+    </div>
+  </div>
+
+  <!-- Metric 2: Fundraising -->
+  <div class="metric-row">
+    <div class="metric-info">
+      <span>Fundraising Total</span>
+      <span><strong>€0</strong> / €1,000</span>
+    </div>
+    <div class="bar-bg">
+      <!-- CHANGE THE WIDTH PERCENTAGE BELOW -->
+      <div class="bar-fill" style="width: 0%;"></div>
+    </div>
+  </div>
+</div>
         /* -------------------------------------------
            THE EXPANDABLE STORY CARD
         -------------------------------------------- */

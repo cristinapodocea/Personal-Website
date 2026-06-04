@@ -207,54 +207,58 @@
         }
 
         /* -------------------------------------------
-           PROGRESS TRACKER SECTION
+           SLEEK, DISCRETE PROGRESS TRACKER
         -------------------------------------------- */
         .tracker-card {
             grid-column: span 6;
             background-color: var(--text-dark);
             border-radius: 16px;
-            padding: 3rem;
+            padding: 1.25rem 2.5rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
         }
 
         .tracker-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--bg-linen);
-            margin-bottom: 2rem;
-            text-align: center;
-            font-weight: 400;
-            letter-spacing: 0.02em;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--soft-sage);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .tracker-metrics {
+            display: flex;
+            flex: 1;
+            gap: 2.5rem;
         }
 
         .metric-row {
-            margin-bottom: 1.75rem;
-        }
-
-        .metric-row:last-child {
-            margin-bottom: 0;
+            flex: 1;
         }
 
         .metric-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-            color: var(--soft-sage);
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .metric-info strong { 
             color: var(--joy-yellow); 
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .bar-bg {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 9999px;
-            height: 14px;
+            height: 6px;
             width: 100%;
             overflow: hidden;
         }
@@ -440,7 +444,15 @@
                 padding: 2.5rem;
             }
             .tracker-card {
-                padding: 2rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            .tracker-metrics {
+                flex-direction: column;
+                width: 100%;
+                gap: 1.25rem;
             }
         }
 
@@ -492,33 +504,35 @@
             </div>
         </a>
 
-        <!-- PROGRESS TRACKER CARD -->
+        <!-- SLEEK PROGRESS TRACKER BAR -->
         <div class="tracker-card">
-            <h2 class="tracker-title">Campaign Progress</h2>
+            <h2 class="tracker-title">Live Progress</h2>
             
-            <!-- Metric 1: Distance -->
-            <div class="metric-row">
-                <div class="metric-info">
-                    <span>Distance Cycled</span>
-                    <!-- FUTURE EDIT: Update the 0 km below -->
-                    <span><strong>0 km</strong> / 400 km</span>
+            <div class="tracker-metrics">
+                <!-- Metric 1: Distance -->
+                <div class="metric-row">
+                    <div class="metric-info">
+                        <span>Distance Cycled</span>
+                        <!-- FUTURE EDIT: Update the 0 km below -->
+                        <span><strong>0 km</strong> / 400 km</span>
+                    </div>
+                    <div class="bar-bg">
+                        <!-- FUTURE EDIT: Update the width style percentage below (e.g., width: 25%) -->
+                        <div class="bar-fill" style="width: 0%;"></div>
+                    </div>
                 </div>
-                <div class="bar-bg">
-                    <!-- FUTURE EDIT: Update the width style percentage below (e.g., width: 25%) -->
-                    <div class="bar-fill" style="width: 0%;"></div>
-                </div>
-            </div>
 
-            <!-- Metric 2: Fundraising -->
-            <div class="metric-row">
-                <div class="metric-info">
-                    <span>Fundraising Total</span>
-                    <!-- FUTURE EDIT: Update the €0 below -->
-                    <span><strong>€0</strong> / €1,000</span>
-                </div>
-                <div class="bar-bg">
-                    <!-- FUTURE EDIT: Update the width style percentage below -->
-                    <div class="bar-fill" style="width: 0%;"></div>
+                <!-- Metric 2: Fundraising -->
+                <div class="metric-row">
+                    <div class="metric-info">
+                        <span>Fundraising Total</span>
+                        <!-- FUTURE EDIT: Update the €0 below -->
+                        <span><strong>€0</strong> / €1,000</span>
+                    </div>
+                    <div class="bar-bg">
+                        <!-- FUTURE EDIT: Update the width style percentage below -->
+                        <div class="bar-fill" style="width: 0%;"></div>
+                    </div>
                 </div>
             </div>
         </div>
